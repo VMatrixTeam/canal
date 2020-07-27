@@ -1,4 +1,4 @@
-FROM canal/osbase:v1
+FROM vmatrixdev/canal-osbase:v1
 
 MAINTAINER agapple (jianghang115@gmail.com)
 

@@ -1,0 +1,20 @@
+name: Publish Docker
+on: 
+  push:
+    branches:
+      - vmatrix
+  schedule:
+    - cron: '0 2 * * 0' # Weekly on Sundays at 02:00
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: Run scripts
+      run: |
+        docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_TOKEN }}
+        bash build.sh base
+        bash build.sh base_v2
+        bash build.sh
+        docker tag vmatrixdev/canal-server vmatrixdev/canal-server:v1.1.4
+        docker push vmatrixdev/canal-server:v1.1.4
