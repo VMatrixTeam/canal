@@ -2,7 +2,8 @@ FROM centos:centos6.10
 
 MAINTAINER agapple (jianghang115@gmail.com)
 
-env DOWNLOAD_LINK="http://download.oracle.com/otn-pub/java/jdk/8u181-b13/96a7b8442fe848ef90c96a2fad6ed6d1/jdk-8u181-linux-x64.rpm"
+# https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html
+env DOWNLOAD_LINK="https://download.oracle.com/otn/java/jdk/8u261-b12/a4634525489241b9a9e1aa73d9e118e6/jdk-8u261-linux-x64.rpm"
 # install system
 
 RUN \
