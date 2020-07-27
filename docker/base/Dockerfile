@@ -3,7 +3,9 @@ FROM centos:centos6.10
 MAINTAINER agapple (jianghang115@gmail.com)
 
 # https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html
-env DOWNLOAD_LINK="https://download.oracle.com/otn/java/jdk/8u261-b12/a4634525489241b9a9e1aa73d9e118e6/jdk-8u261-linux-x64.rpm"
+# https://gist.github.com/wavezhang/ba8425f24a968ec9b2a8619d7c2d86a6
+# Note: linux-i586/jdk-8u261-linux-x64.rpm rather than linux-x64/jdk-8u261-linux-x64.rpm
+env DOWNLOAD_LINK="https://javadl.oracle.com/webapps/download/GetFile/1.8.0_261-b12/a4634525489241b9a9e1aa73d9e118e6/linux-i586/jdk-8u261-linux-x64.rpm"
 # install system
 
 RUN \
@@ -31,7 +33,7 @@ RUN \
 
 RUN \
     touch /var/lib/rpm/* && \ 
-    wget --no-cookies --no-check-certificate --header "Cookie: gpw_e24=xxx; oraclelicense=accept-securebackup-cookie" "$DOWNLOAD_LINK" -O /tmp/jdk-8-linux-x64.rpm && \
+    wget --no-cookies --no-check-certificate "$DOWNLOAD_LINK" -O /tmp/jdk-8-linux-x64.rpm && \
     yum -y install /tmp/jdk-8-linux-x64.rpm && \
     /bin/rm -f /tmp/jdk-8-linux-x64.rpm && \
     echo "export JAVA_HOME=/usr/java/latest" >> /etc/profile && \
